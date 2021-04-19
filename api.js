@@ -1,9 +1,9 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 const db = firebase.firestore();
 
-const movieRef = db.collection("movies");
+const movieRef = db.collection('movies');
 
 export const getAllMovies = () => {
   return movieRef.get().then((snapshot) => {
@@ -22,9 +22,9 @@ export const addMovie = (id, title) => {
     votes: 0,
   });
 };
-const movie = movieRef.doc("ifcmOx3a4HWRFemQ4lvA");
+const movie = movieRef.doc('ifcmOx3a4HWRFemQ4lvA');
 export const updateMovie = () => {
   movie.update({
-    title: "of rats and spikes",
+    title: 'of rats and spikes',
   });
 };
