@@ -5,18 +5,6 @@ const db = firebase.firestore();
 
 const movieRef = db.collection('movies');
 
-// export const getAllMovies = async () => {
-//   const { data } = await moviesRef.get();
-//   console.log();
-//   return data;
-// };
-
-// export const getAllMovies = async () => {
-//   const doc = await movieRef.get();
-//   console.log(doc);
-//   return doc;
-// };
-
 export const getAllMovies = () => {
   movieRef.get().then((snapshot) => {
     const data = snapshot.docs.map((doc) => ({
@@ -24,8 +12,25 @@ export const getAllMovies = () => {
       ...doc.data(),
     }));
     console.log(' dataaaaaaaaaaaa', data);
-    // [ { id: 'glMeZvPpTN1Ah31sKcnj', title: 'The Great Gatsby' } ]
   });
 };
 
-// NativeModules.exports = { getAllMovies };
+export const addMovie = () => {
+  movieRef
+    .add({
+      title: 'Of Mice and Men',
+    })
+    .then((ref) => {
+      console.log('Added doc with ID: ', ref.id);
+    });
+};
+const movie = movieRef.doc('ifcmOx3a4HWRFemQ4lvA');
+export const updateMovie = () => {
+  movie
+    .update({
+      title: 'of rats and spikes',
+    })
+    .then((ref) => {
+      console.log('Added doc with ID: ', ref.id);
+    });
+};
