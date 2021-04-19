@@ -5,7 +5,7 @@ const req = axios.create({
 });
 
 export const fetchTopMovies = () => {
-  req.get(`/top_rated?api_key=${apiKey}`).then(({ data }) => {
-    console.log(data);
+  return req.get(`/top_rated?api_key=${apiKey}`).then(({ data }) => {
+    return data
   });
 };
