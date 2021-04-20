@@ -1,4 +1,4 @@
-import { testData, reducedData, providerData } from './testData';
+import { testData, providerData } from './testData';
 import {
   filterByGenreId,
   compareProviderIdLists,

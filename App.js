@@ -30,3 +30,11 @@ export default class App extends Component {
     );
   }
 }
+
+// filterByGenreId
+// apply map to each movie in filtered list
+// use API and movieId to GET providers
+// use providersByMovieId to get array of providers
+// compare provider ID lists:
+//  if compareProvider returns true,
+//  return/push movie to final array
