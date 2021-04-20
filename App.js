@@ -5,6 +5,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import firebaseConfig from './config';
+import Login from './components/Login';
+import { Router } from '@reach/router';
+import HostFilter from './components/HostFilter';
 
 export default class App extends Component {
   componentDidMount() {}
@@ -12,7 +15,10 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        <p>Hello everybody</p>
+        <Router>
+          <Login path='/' />
+          <HostFilter path='/:name/hostfilter' />
+        </Router>
       </View>
     );
   }
