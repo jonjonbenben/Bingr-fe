@@ -1,5 +1,9 @@
-import { testData } from './testData';
-import { filterByGenreId } from './utils';
+import { testData, reducedData, providerData } from './testData';
+import {
+  filterByGenreId,
+  compareProviderIdLists,
+  providersByMovieId
+} from './utils';
 
 describe('filterByGenreId()', () => {
   test('returns an empty array if no matches', () => {
@@ -24,7 +28,7 @@ describe('filterByGenreId()', () => {
         title: 'The Shawshank Redemption',
         video: false,
         vote_average: 8.7,
-        vote_count: 18766,
+        vote_count: 18766
       },
       {
         adult: false,
@@ -41,7 +45,7 @@ describe('filterByGenreId()', () => {
         title: 'The Godfather',
         video: false,
         vote_average: 8.7,
-        vote_count: 14154,
+        vote_count: 14154
       },
       {
         adult: false,
@@ -58,7 +62,7 @@ describe('filterByGenreId()', () => {
         title: 'Nobody',
         video: false,
         vote_average: 8.6,
-        vote_count: 507,
+        vote_count: 507
       },
       {
         adult: false,
@@ -75,7 +79,7 @@ describe('filterByGenreId()', () => {
         title: 'The Godfather: Part II',
         video: false,
         vote_average: 8.6,
-        vote_count: 8446,
+        vote_count: 8446
       },
       {
         adult: false,
@@ -85,14 +89,16 @@ describe('filterByGenreId()', () => {
         original_language: 'en',
         original_title: 'The Green Mile',
         overview:
+          /*eslint-disable*/
           "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
+        /*eslint-enable*/
         popularity: 39.649,
         poster_path: '/velWPhVMQeQKcxggNEU8YmIo52R.jpg',
         release_date: '2000-03-03',
         title: 'The Green Mile',
         video: false,
         vote_average: 8.5,
-        vote_count: 12136,
+        vote_count: 12136
       },
       {
         adult: false,
@@ -102,14 +108,16 @@ describe('filterByGenreId()', () => {
         original_language: 'en',
         original_title: 'Pulp Fiction',
         overview:
+          /*eslint-disable*/
           "A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
+        /*eslint-enable*/
         popularity: 39.843,
         poster_path: '/x1QZHSq9AzreIVbsp8VgYemAjV0.jpg',
         release_date: '1994-10-21',
         title: 'Pulp Fiction',
         video: false,
         vote_average: 8.5,
-        vote_count: 20949,
+        vote_count: 20949
       },
       {
         adult: false,
@@ -126,8 +134,8 @@ describe('filterByGenreId()', () => {
         title: 'The Dark Knight',
         video: false,
         vote_average: 8.5,
-        vote_count: 24892,
-      },
+        vote_count: 24892
+      }
     ];
     const actualOut = filterByGenreId(80, testData);
     expect(actualOut).toEqual(expectedOut);
@@ -135,5 +143,32 @@ describe('filterByGenreId()', () => {
   test('does not mutate original array', () => {
     const actualOut = filterByGenreId(80, testData);
     expect(actualOut).not.toBe(testData);
+  });
+});
+
+describe('compareProviderIdLists()', () => {
+  test('return true if any providers match', () => {
+    const expectedOut = true;
+    const actualOut = compareProviderIdLists([8, 31, 167], [9, 21, 8]);
+    expect(actualOut).toEqual(expectedOut);
+  });
+  test('return false if no providers match', () => {
+    const expectedOut = false;
+    let actualOut = compareProviderIdLists([10, 17], []);
+    expect(actualOut).toEqual(expectedOut);
+    actualOut = compareProviderIdLists([10, 17], [99, 8, 100]);
+    expect(actualOut).toEqual(expectedOut);
+  });
+});
+
+describe('providersByMovieId()', () => {
+  test('return array of provider IDs', () => {
+    const actualOut = providersByMovieId(providerData);
+    expect(Array.isArray(actualOut)).toBe(true);
+  });
+  test('return all provider IDs for movie', () => {
+    const expectedOut = [8, 31, 339, 167];
+    const actualOut = providersByMovieId(providerData);
+    expect(actualOut).toEqual(expectedOut);
   });
 });
