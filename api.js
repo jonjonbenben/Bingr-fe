@@ -4,6 +4,7 @@ import 'firebase/firestore';
 const db = firebase.firestore();
 
 const movieRef = db.collection('movies');
+const roomRef = db.collection('room')
 
 export const getAllMovies = () => {
   return movieRef.get().then((snapshot) => {
@@ -28,3 +29,10 @@ export const updateMovie = () => {
     title: 'of rats and spikes',
   });
 };
+
+const room = roomRef.doc('jHFSqPX1THcjpuGoeejc')
+export const updateVotes = () => {
+ // console.dir(room)
+  room.update({votes: 99})
+
+}

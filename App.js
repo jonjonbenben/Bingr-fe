@@ -6,8 +6,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { render } from 'react-dom';
 import firebaseConfig from './config';
-import { getAllMovies, addMovie, updateMovie } from './api';
+import { getAllMovies, addMovie, updateMovie, updateVotes } from './api';
 import { fetchTopMovies } from './movie-api';
+import {changes} from './snapshotTest'
 
 export default class App extends Component {
   state = {
@@ -15,21 +16,23 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    fetchTopMovies()
-      .then((data) => {
-        data.results.map(({ id, title }) => {
-          return addMovie(id, title);
-        });
-      })
-      .then(() => {
-        return getAllMovies();
-      })
-      .then((res) => {
-        this.setState({ movies: res });
-      })
-      .catch((err) => {
-        console.dir(err);
-      });
+    // fetchTopMovies()
+    //   .then((data) => {
+    //     data.results.map(({ id, title }) => {
+    //       return addMovie(id, title);
+    //     });
+    //   })
+    //   .then(() => {
+    //     return getAllMovies();
+    //   })
+    //   .then((res) => {
+    //     this.setState({ movies: res });
+    //   })
+      // .catch((err) => {
+      //   console.dir(err);
+      // });
+      updateVotes()
+      changes()
   }
 
   render() {
@@ -37,14 +40,14 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-        {/* {movies.map(({ title, votes }) => {
+        {movies.map(({ title, votes }) => {
           return (
             <div>
               <h1>{title}</h1>
               <p>{votes}</p>
             </div>
           );
-        })} */}
+        })}
       </View>
     );
   }
