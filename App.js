@@ -1,19 +1,25 @@
-import firebase from "firebase/app";
-import "firebase/analytics";
-import "firebase/firestore";
-import { StatusBar } from "expo-status-bar";
-import React, { Component, useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Router } from "@reach/router";
-import firebaseConfig from "./config";
-import Login from "./components/Login";
-import HostFilter from "./components/HostFilter";
-import WaitingRoom from "./components/WaitingRoom";
-import { fetchTopMovies } from "./movie-api";
-import { filterByGenreId } from "./utils/utils";
+import firebase from 'firebase/app';
+import 'firebase/analytics';
+import 'firebase/firestore';
+import { StatusBar } from 'expo-status-bar';
+import React, { Component, useState, useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Router } from '@reach/router';
+import firebaseConfig from './config';
+import Login from './components/Login';
+import HostFilter from './components/HostFilter';
+import WaitingRoom from './components/WaitingRoom';
+import { fetchTopMovies } from './movie-api';
+import { filterByGenreId } from './utils/utils';
 
 const App = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
+  const [providers, setProviders] = useState([]);
+
+
+  const updateProviders = (providers) => {
+    setProviders(providers)
+  }
 
   const updateName = (name) => {
     setName(name);
@@ -49,7 +55,7 @@ const App = () => {
     <View>
       <Router>
         <Login updateName={updateName} path="/" />
-        <HostFilter name={name} path="/hostfilter" />
+        <HostFilter updateProviders= {updateProviders} name={name} path="/hostfilter" />
         <WaitingRoom path="/waitingroom/:name" />
       </Router>
     </View>
