@@ -16,9 +16,13 @@ export const filterByGenreId = (genreId, { data }) => {
 
 export const providersByMovieId = (providers) => {
   const providerIds = [];
-  providers.data.results.GB.flatrate.forEach((provider) => {
-    providerIds.push(provider.provider_id);
-  });
+  if (providers.data.results.hasOwnProperty('GB')) {
+    if (providers.data.results.GB.hasOwnProperty('flatrate')) {
+      providers.data.results.GB.flatrate.forEach((provider) => {
+        providerIds.push(provider.provider_id);
+      });
+    }
+  }
   return providerIds;
 };
 
