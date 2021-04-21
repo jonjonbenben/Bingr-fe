@@ -16,10 +16,9 @@ const App = () => {
   const [name, setName] = useState('');
   const [providers, setProviders] = useState([]);
 
-
   const updateProviders = (providers) => {
-    setProviders(providers)
-  }
+    setProviders(providers);
+  };
 
   const updateName = (name) => {
     setName(name);
@@ -55,7 +54,7 @@ const App = () => {
     <View>
       <Router>
         <Login updateName={updateName} path="/" />
-        <HostFilter updateProviders= {updateProviders} name={name} path="/hostfilter" />
+        <HostFilter updateProviders={updateProviders} name={name} path="/hostfilter" />
         <WaitingRoom path="/waitingroom/:name" />
       </Router>
     </View>
