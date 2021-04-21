@@ -1,16 +1,13 @@
-export const filterByGenreId = (genreId, { data }) => {
+export const filterByGenreId = (genreIds, { data }) => {
   const matchingMovies = data.results.filter((movie) => {
     if (
       movie.genre_ids.some((id) => {
-        if (id === genreId) {
-          return true;
-        }
-      }) === true
+        return genreIds.includes(id);
+      })
     ) {
       return movie;
     }
   });
-
   return matchingMovies;
 };
 
