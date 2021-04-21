@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import HostFilter from './HostFilter';
-import { Link } from '@reach/router';
+import React, { useState, useEffect } from "react";
+import HostFilter from "./HostFilter";
+import { Link, navigate } from "@reach/router";
 
-
-const Login = () => {
-  const [name, setName] = useState('');
-
+const Login = (prop) => {
   return (
     <section>
       <h1>Bingr!!!!</h1>
@@ -13,19 +10,14 @@ const Login = () => {
       <form>
         <input
           onChange={(e) => {
-            //console.dir(e.target.value);
-            setName(e.target.value);
-            console.log(name, 'JHDJHDSSHDHDHJ');
+            prop.updateName(e.target.value);
           }}
-          type='text'
+          type="text"
         ></input>
         <button>SubmitName</button>
       </form>
 
-      <Link key={name} to={`/${name}/hostfilter`}>
-        {' '}
-        Host{' '}
-      </Link>
+      <Link to={`/hostfilter`}> Host </Link>
 
       <button>Join Game</button>
     </section>
