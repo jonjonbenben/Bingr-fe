@@ -16,8 +16,10 @@ export const filterByGenreId = (genreId, { data }) => {
 
 export const providersByMovieId = (providers) => {
   const providerIds = [];
+  /*eslint-disable*/
   if (providers.data.results.hasOwnProperty('GB')) {
     if (providers.data.results.GB.hasOwnProperty('flatrate')) {
+      /*eslint-enable*/
       providers.data.results.GB.flatrate.forEach((provider) => {
         providerIds.push(provider.provider_id);
       });
