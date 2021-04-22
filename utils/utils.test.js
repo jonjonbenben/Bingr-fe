@@ -1,10 +1,14 @@
 import { testData, providerData } from './testData';
-import { filterByGenreId, compareProviderIdLists, providersByMovieId } from './utils';
+import {
+  filterByGenreId,
+  compareProviderIdLists,
+  providersByMovieId,
+} from './utils';
 
 describe('filterByGenreId()', () => {
   test('returns an empty array if no matches', () => {
     const expectedOut = [];
-    const actualOut = filterByGenreId(1, testData);
+    const actualOut = filterByGenreId([1], testData);
     expect(actualOut).toEqual(expectedOut);
   });
   test('returns movies from the genre id 80', () => {
@@ -133,11 +137,11 @@ describe('filterByGenreId()', () => {
         vote_count: 24892,
       },
     ];
-    const actualOut = filterByGenreId(80, testData);
+    const actualOut = filterByGenreId([80], testData);
     expect(actualOut).toEqual(expectedOut);
   });
   test('does not mutate original array', () => {
-    const actualOut = filterByGenreId(80, testData);
+    const actualOut = filterByGenreId([80], testData);
     expect(actualOut).not.toBe(testData);
   });
 });

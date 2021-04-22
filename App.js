@@ -47,15 +47,15 @@ const App = () => {
   return (
     <View>
       <Router>
-        <Login updateName={updateName} path="/" />
+        <Login updateName={updateName} path='/' />
         <HostFilter
           updateProviders={updateProviders}
           name={name}
           setProviders={setProviders}
-          path="/hostfilter"
+          path='/hostfilter'
         />
-        <WaitingRoom path="/waitingroom" />
-        <MovieCard movieList={movieList} path="/moviecard" />
+        <WaitingRoom path='/waitingroom' />
+        <MovieCard movieList={movieList} path='/moviecard' />
       </Router>
     </View>
   );
