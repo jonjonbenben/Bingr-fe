@@ -12,17 +12,19 @@ export const formattedMoviesArray = [
     votes_tally: 0,
   },
   {
+    /*eslint-disable*/
     id: 724089,
     title: "Gabriel's Inferno Part II",
     up_votes: 0,
     votes_tally: 0,
+    /*eslint-enable*/
   },
 ];
 
-export const createGameRoom = (code, formattedMoviesArray) => {
+export const createGameRoom = (code, hostName, formattedMoviesArray) => {
   firebase
     .firestore()
     .collection('room')
     .doc(code)
-    .set({ movies: formattedMoviesArray });
+    .set({ movies: formattedMoviesArray, users: [hostName] });
 };

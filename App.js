@@ -38,7 +38,7 @@ const App = () => {
   ]);
 
   useEffect(() => {
-    createGameRoom('yght', formattedMoviesArray);
+    createGameRoom('yght', 'Jonathan', formattedMoviesArray);
   });
 
   const updateProviders = (providers) => {
