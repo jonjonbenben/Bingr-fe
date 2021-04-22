@@ -1,5 +1,10 @@
-import { testData, providerData } from './testData';
-import { filterByGenreId, compareProviderIdLists, providersByMovieId } from './utils';
+import { testData, providerData, smallerMoviesArray } from './testData';
+import {
+  filterByGenreId,
+  compareProviderIdLists,
+  providersByMovieId,
+  formatGamesRoomMovies,
+} from './utils';
 
 describe('filterByGenreId()', () => {
   test('returns an empty array if no matches', () => {
@@ -165,6 +170,33 @@ describe('providersByMovieId()', () => {
   test('return all provider IDs for movie', () => {
     const expectedOut = [8, 31, 339, 167];
     const actualOut = providersByMovieId(providerData);
+    expect(actualOut).toEqual(expectedOut);
+  });
+});
+
+describe('formatGamesRoomMovies', () => {
+  test('should return an array when passed an array', () => {
+    const expectedOut = [];
+    const actualOut = formatGamesRoomMovies([]);
+    expect(actualOut).toEqual(expectedOut);
+  });
+
+  test('correctly formats array of movies', () => {
+    const expectedOut = [
+      {
+        id: 278,
+        title: 'The Shawshank Redemption',
+        up_votes: 0,
+        votes_tally: 0,
+      },
+      {
+        id: 724089,
+        title: "Gabriel's Inferno Part II",
+        up_votes: 0,
+        votes_tally: 0,
+      },
+    ];
+    const actualOut = formatGamesRoomMovies(smallerMoviesArray);
     expect(actualOut).toEqual(expectedOut);
   });
 });

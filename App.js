@@ -12,6 +12,7 @@ import WaitingRoom from './components/WaitingRoom';
 import MovieCard from './components/MovieCard';
 import { fetchTopMovies } from './movie-api';
 import { filterByGenreId } from './utils/utils';
+import { createGameRoom, formattedMoviesArray } from './utils/createGameRoom';
 
 const App = () => {
   const [name, setName] = useState('');
@@ -36,6 +37,10 @@ const App = () => {
     },
   ]);
 
+  useEffect(() => {
+    createGameRoom('yght', formattedMoviesArray);
+  });
+
   const updateProviders = (providers) => {
     setProviders(providers);
   };
@@ -47,15 +52,15 @@ const App = () => {
   return (
     <View>
       <Router>
-        <Login updateName={updateName} path="/" />
+        <Login updateName={updateName} path='/' />
         <HostFilter
           updateProviders={updateProviders}
           name={name}
           setProviders={setProviders}
-          path="/hostfilter"
+          path='/hostfilter'
         />
-        <WaitingRoom path="/waitingroom" />
-        <MovieCard movieList={movieList} path="/moviecard" />
+        <WaitingRoom path='/waitingroom' />
+        <MovieCard movieList={movieList} path='/moviecard' />
       </Router>
     </View>
   );

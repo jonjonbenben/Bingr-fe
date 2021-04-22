@@ -36,3 +36,18 @@ export const compareProviderIdLists = (chosenProviders, availableProviders) => {
   });
   return match;
 };
+
+export const formatGamesRoomMovies = (unformattedMovies) => {
+  const formattedMovies = [];
+
+  unformattedMovies.forEach((movie) => {
+    formattedMovies.push({
+      id: movie.id,
+      title: movie.title,
+      up_votes: 0,
+      votes_tally: 0,
+    });
+  });
+
+  return formattedMovies;
+};
