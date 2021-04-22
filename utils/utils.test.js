@@ -1,9 +1,5 @@
 import { testData, providerData } from './testData';
-import {
-  filterByGenreId,
-  compareProviderIdLists,
-  providersByMovieId,
-} from './utils';
+import { filterByGenreId, compareProviderIdLists, providersByMovieId } from './utils';
 
 describe('filterByGenreId()', () => {
   test('returns an empty array if no matches', () => {
