@@ -10,8 +10,7 @@ import Login from './components/Login';
 import HostFilter from './components/HostFilter';
 import WaitingRoom from './components/WaitingRoom';
 import MovieCard from './components/MovieCard';
-import { fetchTopMovies } from './movie-api';
-import { filterByGenreId } from './utils/utils';
+
 
 const App = () => {
   const [name, setName] = useState('');
@@ -37,6 +36,8 @@ const App = () => {
     },
   ]);
 
+
+
   return (
     <View>
       <Router>
@@ -44,10 +45,11 @@ const App = () => {
         <HostFilter
           setProviders={setProviders}
           setCategories={setCategories}
+          setMovieList={setMovieList}
           name={name}
           path="/hostfilter"
         />
-        <WaitingRoom providers={providers} path="/waitingroom" />
+        <WaitingRoom movieList={movieList} path="/waitingroom" />
         <MovieCard movieList={movieList} path="/moviecard" />
       </Router>
     </View>

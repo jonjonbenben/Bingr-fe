@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Link, navigate } from "@reach/router";
-import "../public/HostFilter.css";
+import React, { useState } from 'react';
+import { Link, navigate } from '@reach/router';
+import '../public/HostFilter.css';
+import {initiateMovieList} from '../movieList'
 
 const HostFilter = (props) => {
   const [providers, setProviders] = useState([]);
@@ -12,7 +13,7 @@ const HostFilter = (props) => {
     console.log(className);
     const id = Number(provider);
 
-    if (className === "setProviders") {
+    if (className === 'setProviders') {
       setProviders((prevState) => {
         return updateState(id, checked, prevState);
       });
@@ -37,10 +38,14 @@ const HostFilter = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   // props.updateProviders(providers);
-   props.setProviders(providers)
-    props.setCategories(categories)
-    navigate("/waitingroom");
+    // props.updateProviders(providers);
+    props.setProviders(providers);
+    props.setCategories(categories);
+    initiateMovieList().then((res)=> {
+      props.setMovieList(res)
+      navigate('/waitingroom');
+    })
+    
   };
 
   return (
@@ -88,52 +93,50 @@ const HostFilter = (props) => {
         </div>
         <h2>Select a Genre</h2>
         <input
-            onChange={(e) =>
-              handleChange(e.target.value, e.target.checked, e.target.className)
-            }
-            type="checkbox"
-            id="action"
-            name="action"
-            value="28"
-            className="setCategory"
-          />
-          <label htmlFor="action">Action</label>
-          <input
-            onChange={(e) =>
-              handleChange(e.target.value, e.target.checked, e.target.className)
-            }
-            type="checkbox"
-            id="comedy"
-            name="comedy"
-            value="35"
-            className="setCategory"
-          />
-          <label htmlFor="comedy">Comedy</label>
-          <input
-            onChange={(e) =>
-              handleChange(e.target.value, e.target.checked, e.target.className)
-            }
-            type="checkbox"
-            id="fantasy"
-            name="fantasy"
-            value="14"
-            className="setCategory"
-          />
-          <label htmlFor="fantasy">Fantasy</label>
-          <input
-            onChange={(e) =>
-              handleChange(e.target.value, e.target.checked, e.target.className)
-            }
-            type="checkbox"
-            id="horror"
-            name="horror"
-            value="27"
-            className="setCategory"
-          />
-          <label htmlFor="horror">Horror</label>
-     
-        <button className="button">Create Room</button>{" "}
-
+          onChange={(e) =>
+            handleChange(e.target.value, e.target.checked, e.target.className)
+          }
+          type="checkbox"
+          id="action"
+          name="action"
+          value="28"
+          className="setCategory"
+        />
+        <label htmlFor="action">Action</label>
+        <input
+          onChange={(e) =>
+            handleChange(e.target.value, e.target.checked, e.target.className)
+          }
+          type="checkbox"
+          id="comedy"
+          name="comedy"
+          value="35"
+          className="setCategory"
+        />
+        <label htmlFor="comedy">Comedy</label>
+        <input
+          onChange={(e) =>
+            handleChange(e.target.value, e.target.checked, e.target.className)
+          }
+          type="checkbox"
+          id="fantasy"
+          name="fantasy"
+          value="14"
+          className="setCategory"
+        />
+        <label htmlFor="fantasy">Fantasy</label>
+        <input
+          onChange={(e) =>
+            handleChange(e.target.value, e.target.checked, e.target.className)
+          }
+          type="checkbox"
+          id="horror"
+          name="horror"
+          value="27"
+          className="setCategory"
+        />
+        <label htmlFor="horror">Horror</label>
+        <button className="button">Create Room</button>{' '}
       </form>
     </div>
   );

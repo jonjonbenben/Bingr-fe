@@ -13,7 +13,7 @@ export const initiateMovieList = () => {
     const chosenProviders = [39, 29, 9];
     return fetchTopMovies(pageNumber)
       .then((res) => {
-        const moviesByGenreId = filterByGenreId(80, res);
+        const moviesByGenreId = filterByGenreId([80], res);
         const moviePromises = moviesByGenreId.map((movie) => {
           return fetchMovieById(movie.id);
         });
