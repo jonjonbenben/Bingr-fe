@@ -4,7 +4,7 @@ import { navigate } from '@reach/router';
 import { codeGenerator } from '../codeGenerator';
 
 const WaitingRoom = (props) => {
-  // console.log(props, 'IN WAITING ROOM');
+   //console.log(props.providers, 'IN WAITING ROOM');
 
 
 
