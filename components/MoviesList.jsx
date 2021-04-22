@@ -4,18 +4,23 @@ import MovieCard from './MovieCard';
 
 
 const MoviesList = (props) => {
+    const { movieList } = props;
     const [counter, setCounter] = useState(0);
 
     const incrementCounter = () => {
-        setCounter((prevState) => {
-            const newState = prevState;
-            console.log(newState, 'increment');
-           return newState + 1;
-        })
+        if (counter < movieList.length - 1) {
+            console.log(movieList.length);
+            setCounter((prevState) => {
+                    const newState = prevState;
+                    console.log(newState, 'increment');
+                   return newState + 1;
+            })
+        } else {
+            navigate('/result')
+        }
     }
 
   console.log(props);
-  const { movieList } = props;
   console.log(movieList);
   return (
     <MovieCard 

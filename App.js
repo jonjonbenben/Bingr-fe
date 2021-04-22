@@ -9,7 +9,7 @@ import firebaseConfig from './config';
 import Login from './components/Login';
 import HostFilter from './components/HostFilter';
 import WaitingRoom from './components/WaitingRoom';
-
+import Result from './components/Result';
 import MoviesList from './components/MoviesList';
 // import { createGameRoom, formattedMoviesArray } from './utils/createGameRoom';
 
@@ -50,6 +50,7 @@ const App = () => {
         />
         <WaitingRoom movieList={movieList} path='/waitingroom' />
         <MoviesList movieList={movieList} path='/movieslist' />
+        <Result path='/result' />
       </Router>
     </View>
   );
