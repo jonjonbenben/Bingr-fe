@@ -11,7 +11,6 @@ import HostFilter from './components/HostFilter';
 import WaitingRoom from './components/WaitingRoom';
 import MovieCard from './components/MovieCard';
 
-
 const App = () => {
   const [name, setName] = useState('');
   const [providers, setProviders] = useState([]);
@@ -35,8 +34,6 @@ const App = () => {
       vote_count: 18770,
     },
   ]);
-
-
 
   return (
     <View>
