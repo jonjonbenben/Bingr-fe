@@ -10,13 +10,12 @@ import Login from './components/Login';
 import HostFilter from './components/HostFilter';
 import WaitingRoom from './components/WaitingRoom';
 import MovieCard from './components/MovieCard';
-import { fetchTopMovies } from './movie-api';
-import { filterByGenreId } from './utils/utils';
 import { createGameRoom, formattedMoviesArray } from './utils/createGameRoom';
 
 const App = () => {
   const [name, setName] = useState('');
-  const [providers, setProviders] = useState({});
+  const [providers, setProviders] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [movieList, setMovieList] = useState([
     {
       adult: false,
@@ -37,30 +36,19 @@ const App = () => {
     },
   ]);
 
-  useEffect(() => {
-    createGameRoom('yght', 'Jonathan', formattedMoviesArray);
-  });
-
-  const updateProviders = (providers) => {
-    setProviders(providers);
-  };
-
-  const updateName = (name) => {
-    setName(name);
-  };
-
   return (
     <View>
       <Router>
-        <Login updateName={updateName} path='/' />
+        <Login setName={setName} path="/" />
         <HostFilter
-          updateProviders={updateProviders}
-          name={name}
           setProviders={setProviders}
-          path='/hostfilter'
+          setCategories={setCategories}
+          setMovieList={setMovieList}
+          name={name}
+          path="/hostfilter"
         />
-        <WaitingRoom path='/waitingroom' />
-        <MovieCard movieList={movieList} path='/moviecard' />
+        <WaitingRoom movieList={movieList} path="/waitingroom" />
+        <MovieCard movieList={movieList} path="/moviecard" />
       </Router>
     </View>
   );
