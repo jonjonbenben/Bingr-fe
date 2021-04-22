@@ -35,20 +35,28 @@ const App = () => {
       vote_count: 18770,
     },
   ]);
+  const [roomCode, setRoomCode] = useState('f');
 
   return (
     <View>
       <Router>
-        <Login setName={setName} path="/" />
+        <Login setName={setName} path='/' />
         <HostFilter
           setProviders={setProviders}
           setCategories={setCategories}
+          setRoomCode={setRoomCode}
           setMovieList={setMovieList}
           name={name}
-          path="/hostfilter"
+          roomCode={roomCode}
+          movieList={movieList}
+          path='/hostfilter'
         />
-        <WaitingRoom movieList={movieList} path="/waitingroom" />
-        <MovieCard movieList={movieList} path="/moviecard" />
+        <WaitingRoom
+          movieList={movieList}
+          roomCode={roomCode}
+          path='/waitingroom'
+        />
+        <MovieCard movieList={movieList} path='/moviecard' />
       </Router>
     </View>
   );

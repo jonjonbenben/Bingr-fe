@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, navigate } from '@reach/router';
 import '../public/HostFilter.css';
 import { initiateMovieList } from '../movieList';
 import { formatGamesRoomMovies } from '../utils/utils';
 import { createGameRoom } from '../utils/createGameRoom';
+import { codeGenerator } from '../codeGenerator';
 
 const HostFilter = (props) => {
   const [providers, setProviders] = useState([]);
 
   const [categories, setCategories] = useState([]);
 
-  console.log(providers, categories);
   const handleChange = (provider, checked, className) => {
-    console.log(className);
     const id = Number(provider);
 
     if (className === 'setProviders') {
@@ -37,10 +36,13 @@ const HostFilter = (props) => {
       }
     };
   };
+  useEffect(() => {
+    const code = codeGenerator();
+    props.setRoomCode(code);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // props.updateProviders(providers);
     props.setProviders(providers);
     props.setCategories(categories);
     initiateMovieList()
@@ -50,10 +52,12 @@ const HostFilter = (props) => {
       })
       .then((filteredMovies) => {
         const formattedMovies = formatGamesRoomMovies(filteredMovies);
-        return formattedMovies;
-      })
-      .then((formattedMovies) => {
-        createGameRoom('ghts', 'scott', formattedMovies);
+        createGameRoom(
+          props.roomCode,
+          props.name,
+          formattedMovies,
+          filteredMovies
+        );
         navigate('/waitingroom');
       });
   };
