@@ -38,11 +38,8 @@ const HostFilter = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // props.updateProviders(providers);
-    props.setProviders(providers);
-    props.setCategories(categories);
-    initiateMovieList().then((res)=> {
-      props.setMovieList(res)
+    initiateMovieList(providers, categories).then((res)=> {
+      props.setMovieList(res.slice(0, 20))
       navigate('/waitingroom');
     })
     

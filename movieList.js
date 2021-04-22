@@ -1,5 +1,9 @@
 import { fetchTopMovies, fetchMovieById } from './movie-api';
-import { filterByGenreId, providersByMovieId, compareProviderIdLists } from './utils/utils';
+import {
+  filterByGenreId,
+  providersByMovieId,
+  compareProviderIdLists,
+} from './utils/utils';
 
 // TODO:
 
@@ -7,13 +11,12 @@ import { filterByGenreId, providersByMovieId, compareProviderIdLists } from './u
 // needs to take chosenProviders as array
 // ideally should take to take film list
 
-export const initiateMovieList = () => {
+export const initiateMovieList = (chosenProviders, chosenCategories) => {
   const movieList = [];
   const createMovieList = (pageNumber = 1) => {
-    const chosenProviders = [39, 29, 9];
     return fetchTopMovies(pageNumber)
       .then((res) => {
-        const moviesByGenreId = filterByGenreId([80], res);
+        const moviesByGenreId = filterByGenreId(chosenCategories, res);
         const moviePromises = moviesByGenreId.map((movie) => {
           return fetchMovieById(movie.id);
         });
