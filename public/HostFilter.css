@@ -1,0 +1,115 @@
+body {
+  background: rgb(74, 198, 205);
+  background: linear-gradient(
+    185deg,
+    rgba(74, 198, 205, 1) 0%,
+    rgba(73, 214, 149, 1) 100%
+  );
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.filter-page {
+  background: rgba(0, 0, 0, 0.3);
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.filter-page h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  opacity: 0.9;
+  text-align: center;
+  margin-right: 5%;
+  color: #f9f9f9;
+}
+
+.filter-form input {
+  color: #f9f9f9;
+  opacity: 0.8;
+}
+
+.filter-form label {
+  color: #f9f9f9;
+  opacity: 0.8;
+}
+
+.filter-form h2 {
+  color: #f9f9f9;
+  opacity: 0.8;
+  font-size: 18px;
+  text-align: center;
+}
+
+.filter-form {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.filter-form .button {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.genre-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 35%;
+  margin-right: 35%;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #f9f9f9 0.5px;
+  color: #f9f9f9;
+  opacity: 0.8;
+  background-color: rgb(249, 249, 249, 0);
+  border-radius: 20px;
+}
+
+.button {
+  border-radius: 5px;
+  color: white;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 5px;
+  border-style: none;
+}
+
+.button {
+  background-image: linear-gradient(
+    to right,
+    #02aab0 0%,
+    #00cdac 51%,
+    #02aab0 100%
+  );
+}
+.button {
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: block;
+  margin-top: 30px;
+}
+
+.button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}

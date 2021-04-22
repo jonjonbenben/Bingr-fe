@@ -1,0 +1,112 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
+body {
+  background: rgb(74, 198, 205);
+  background: linear-gradient(
+    185deg,
+    rgba(74, 198, 205, 1) 0%,
+    rgba(73, 214, 149, 1) 100%
+  );
+}
+
+.login-page {
+  background: rgba(0, 0, 0, 0.3);
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.login-page p {
+  text-align: center;
+  color: #f9f9f9;
+  margin: 0%;
+  font-size: 12px;
+}
+
+.login-logo {
+  max-width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.login label {
+  color: gray;
+  text-align: center;
+  margin-bottom: 3px;
+}
+.login input {
+  border: none;
+  color: #f9f9f9;
+  border-bottom: solid 1px #f9f9f9;
+  background-color: rgb(249, 249, 249, 0);
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #f9f9f9;
+  opacity: 0.8;
+}
+
+.button {
+  border-radius: 5px;
+
+  color: white;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 5px;
+  border-style: none;
+}
+
+.button {
+  background-image: linear-gradient(
+    to right,
+    #02aab0 0%,
+    #00cdac 51%,
+    #02aab0 100%
+  );
+}
+.button {
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: block;
+}
+
+.button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-page .creators {
+  color: #f9f9f9;
+  text-align: center;
+}
+
+/* host filter */

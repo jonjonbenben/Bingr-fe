@@ -9,12 +9,32 @@ import firebaseConfig from './config';
 import Login from './components/Login';
 import HostFilter from './components/HostFilter';
 import WaitingRoom from './components/WaitingRoom';
+import MovieCard from './components/MovieCard';
 import { fetchTopMovies } from './movie-api';
 import { filterByGenreId } from './utils/utils';
 
 const App = () => {
   const [name, setName] = useState('');
-  const [providers, setProviders] = useState([]);
+  const [providers, setProviders] = useState({});
+  const [movieList, setMovieList] = useState([
+    {
+      adult: false,
+      backdrop_path: '/iNh3BivHyg5sQRPP1KOkzguEX0H.jpg',
+      genre_ids: (2)[(18, 80)],
+      id: 278,
+      original_language: 'en',
+      original_title: 'The Shawshank Redemption',
+      overview:
+        'Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.',
+      popularity: 48.395,
+      poster_path: '/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg',
+      release_date: '1994-09-23',
+      title: 'The Shawshank Redemption',
+      video: false,
+      vote_average: 8.7,
+      vote_count: 18770,
+    },
+  ]);
 
   const updateProviders = (providers) => {
     setProviders(providers);
@@ -24,48 +44,21 @@ const App = () => {
     setName(name);
   };
 
-  useEffect(() => {
-    fetchTopMovies()
-      .then((res) => {
-        return filterByGenreId(80, res);
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
-
-  // componentDidMount() {
-  //   fetchTopMovies()
-  //     .then((res) => {
-  //       return filterByGenreId(80, res);
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //}
-
   return (
     <View>
       <Router>
-        <Login updateName={updateName} path="/" />
-        <HostFilter updateProviders={updateProviders} name={name} path="/hostfilter" />
-        <WaitingRoom path="/waitingroom/:name" />
+        <Login updateName={updateName} path='/' />
+        <HostFilter
+          updateProviders={updateProviders}
+          name={name}
+          setProviders={setProviders}
+          path='/hostfilter'
+        />
+        <WaitingRoom path='/waitingroom' />
+        <MovieCard movieList={movieList} path='/moviecard' />
       </Router>
     </View>
   );
 };
 
 export default App;
-// filterByGenreId
-// apply map to each movie in filtered list
-// use API and movieId to GET providers
-// use providersByMovieId to get array of providers
-// compare provider ID lists:
-//  if compareProvider returns true,
-//  return/push movie to final array

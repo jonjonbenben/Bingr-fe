@@ -1,14 +1,18 @@
 import React from 'react';
+import { navigate } from '@reach/router';
 
 import { codeGenerator } from '../codeGenerator';
 
 const WaitingRoom = (props) => {
-  console.log(props, 'IN WAITING ROOM');
+  // console.log(props, 'IN WAITING ROOM');
+
+
+
   return (
     <div>
       <h1>Your code is.....{codeGenerator()}</h1>
       <h1>{props.name}</h1>
-      <button>Start</button>
+      <button onClick={() => {navigate('/moviecard')}}>Start</button>
     </div>
   );
 };
