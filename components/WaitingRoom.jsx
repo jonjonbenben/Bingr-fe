@@ -12,7 +12,7 @@ const WaitingRoom = (props) => {
       <h1>{props.name}</h1>
       <button
         onClick={() => {
-          navigate('/moviecard');
+          navigate('/movieslist');
         }}
       >
         Start
