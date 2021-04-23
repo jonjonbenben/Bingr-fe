@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, navigate } from '@reach/router';
-import { getMovie, incrementVote } from '../firebase-api';
+import { getMovie, incrementVote, updateVotesCount } from '../firebase-api';
 
 const MovieCard = ({ roomCode }) => {
   const [currentFilm, setCurrentFilm] = useState({});
@@ -18,12 +18,12 @@ const MovieCard = ({ roomCode }) => {
     }
   };
 
-  useEffect(() => {
-    getMovie(counter, roomCode).then((res) => {
-      console.log(res);
-      setCurrentFilm(res);
-    });
-  }, [counter]);
+  // useEffect(() => {
+  //   getMovie(counter, roomCode).then((res) => {
+  //     console.log(res);
+  //     setCurrentFilm(res);
+  //   });
+  // }, [counter]);
 
   const { title, vote_average, overview, poster_path, id } = currentFilm;
 
@@ -43,7 +43,8 @@ const MovieCard = ({ roomCode }) => {
       <button
         onClick={() => {
           incrementCounter();
-          incrementVote(roomCode, id);
+          // incrementVote(roomCode, id);
+          updateVotesCount();
         }}
       >
         Bingr
