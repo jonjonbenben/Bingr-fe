@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, navigate } from '@reach/router';
-import '../public/HostFilter.css';
+// import '../public/HostFilter.css';
 import { initiateMovieList } from '../movieList';
 import { formatGamesRoomMovies } from '../utils/utils';
 import { createGameRoom } from '../utils/createGameRoom';

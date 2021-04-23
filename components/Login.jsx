@@ -1,45 +1,45 @@
-import React, { useState, useEffect } from "react";
-import HostFilter from "./HostFilter";
-import { Link, navigate } from "@reach/router";
-import logo from "../public/logo.png";
-import "../public/app.css";
+import React, { useState, useEffect } from 'react';
+import HostFilter from './HostFilter';
+import { Link, navigate } from '@reach/router';
+import logo from '../public/logo.png';
+// import "../public/app.css";
 
 const Login = (props) => {
   return (
-    <section className="login-page">
-      <img className="login-logo" src={logo} alt="logo"></img>
+    <section className='login-page'>
+      <img className='login-logo' src={logo} alt='logo'></img>
       <form
-        className="login"
+        className='login'
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/hostfilter");
+          navigate('/hostfilter');
         }}
       >
         <input
-          placeHolder="Enter name"
+          placeHolder='Enter name'
           onChange={(e) => {
             props.setName(e.target.value);
           }}
-          type="text"
+          type='text'
         ></input>
         <br />
-        <button className="button">Host</button>
+        <button className='button'>Host</button>
         <br />
 
         <p>OR</p>
         <br />
 
         <input
-          placeHolder="Enter name"
+          placeHolder='Enter name'
           onChange={(e) => {
             props.setName(e.target.value);
           }}
-          type="text"
+          type='text'
         ></input>
         <br />
-        <input placeHolder="Enter room code" type="text"></input>
+        <input placeHolder='Enter room code' type='text'></input>
         <br />
-        <button className="button">Join</button>
+        <button className='button'>Join</button>
         <br />
       </form>
     </section>

@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import firebase from './config';
 
 export const changes = () => {
   firebase

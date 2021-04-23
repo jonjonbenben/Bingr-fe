@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import firebase from './config';
 
 const db = firebase.firestore();
 const movieRef = db.collection('movies');
