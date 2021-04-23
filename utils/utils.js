@@ -51,3 +51,17 @@ export const formatGamesRoomMovies = (unformattedMovies) => {
 
   return formattedMovies;
 };
+
+export const sortMoviesByVotes = (movieList) => {
+  const movieListCopy = [...movieList];
+  movieListCopy.sort((a, b) => {
+    if (a.up_votes < b.up_votes) {
+      return 1;
+    } else if (a.up_votes > b.up_votes) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return movieListCopy.splice(0, 5);
+};

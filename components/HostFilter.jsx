@@ -44,7 +44,7 @@ const HostFilter = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    initiateMovieList()
+    initiateMovieList(providers, categories)
       .then((res) => {
         props.setMovieList(res);
         return res;

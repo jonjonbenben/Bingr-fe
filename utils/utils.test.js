@@ -1,9 +1,10 @@
-import { testData, providerData, smallerMoviesArray } from './testData';
+import { testData, providerData, smallerMoviesArray, moviesToSort } from './testData';
 import {
   filterByGenreId,
   compareProviderIdLists,
   providersByMovieId,
   formatGamesRoomMovies,
+  sortMoviesByVotes,
 } from './utils';
 
 describe('filterByGenreId()', () => {
@@ -200,5 +201,18 @@ describe('formatGamesRoomMovies', () => {
     ];
     const actualOut = formatGamesRoomMovies(smallerMoviesArray);
     expect(actualOut).toEqual(expectedOut);
+  });
+});
+describe.only('sortMoviesByVotes', () => {
+  test('gets top 5 movies in array', () => {
+    const expected = [
+      { title: 'The Shawshank Redemption', id: 278, votes_tally: 5, up_votes: 5 },
+      { title: 'The Godfather', up_votes: 5, votes_tally: 5, id: 238 },
+      { votes_tally: 5, up_votes: 3, title: 'The Godfather: Part II', id: 240 },
+      { votes_tally: 5, up_votes: 2, id: 497, title: 'The Green Mile' },
+      { id: 155, votes_tally: 5, up_votes: 1, title: 'The Dark Knight' },
+    ];
+    const actual = sortMoviesByVotes(moviesToSort);
+    expect(actual).toEqual(expected);
   });
 });

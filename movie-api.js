@@ -21,3 +21,7 @@ export const fetchMovieById = (movieId) => {
 export const fetchProviders = () => {
   return req.get(`/watch/providers/movie?api_key=${apiKey}&language=en-US`);
 };
+
+export const fetchSingleMovieById = (movieId) => {
+  return req.get(`/movie/${movieId}?api_key=${apiKey}`);
+};

@@ -2950,3 +2950,11 @@ export const smallerMoviesArray = [
     vote_count: 1237,
   },
 ];
+export const moviesToSort = [
+  { title: 'The Shawshank Redemption', id: 278, votes_tally: 5, up_votes: 5 },
+  { title: 'The Godfather', up_votes: 5, votes_tally: 5, id: 238 },
+  { votes_tally: 5, up_votes: 3, title: 'The Godfather: Part II', id: 240 },
+  { votes_tally: 5, up_votes: 2, id: 497, title: 'The Green Mile' },
+  { votes_tally: 5, id: 680, title: 'Pulp Fiction', up_votes: 0 },
+  { id: 155, votes_tally: 5, up_votes: 1, title: 'The Dark Knight' },
+];

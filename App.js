@@ -41,7 +41,7 @@ const App = () => {
   return (
     <View>
       <Router>
-        <Login setName={setName} path='/' />
+        <Login setName={setName} path="/" />
         <HostFilter
           setProviders={setProviders}
           setCategories={setCategories}
@@ -50,14 +50,11 @@ const App = () => {
           name={name}
           roomCode={roomCode}
           movieList={movieList}
-          path='/hostfilter'
+          path="/hostfilter"
         />
-        <WaitingRoom
-          movieList={movieList}
-          roomCode={roomCode}
-          path='/waitingroom'
-        />
-        <MoviesList movieList={movieList} path='/movieslist' />
+        <WaitingRoom movieList={movieList} roomCode={roomCode} path="/waitingroom" />
+        <MoviesList movieList={movieList} path="/movieslist" />
+        <Result path="/result" />
       </Router>
     </View>
   );
