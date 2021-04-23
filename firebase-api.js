@@ -1,47 +1,26 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-const db = firebase.firestore();
-const movieRef = db.collection('movies');
+const db = firebase.firestore().collection('room');
 
-export const getMovie = (index, roomCode) => {
-  const roomRef = db.collection('room').doc(roomCode);
-  return roomRef
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        return doc.data().bigMovieData[index];
-      } else {
-        console.log('Not here');
-      }
-    })
-    .catch((err) => {
-      console.log('Error: ', err);
-    });
+export const getMovie = async (index, roomCode) => {
+  const roomRef = db.doc(roomCode);
+  try {
+    const doc = await roomRef.get();
+    if (doc.exists) {
+      return doc.data().bigMovieData[index];
+    } else {
+      console.log('Not here');
+    }
+  } catch (err) {
+    console.log('Error: ', err);
+  }
 };
 
-export const getAllMovies = async () => {
-  const snapshot = await movieRef.get();
-  const data = snapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-  return data;
-};
-
-export const addMovie = (id, title) => {
-  movieRef.add({
-    title,
-    id,
-    votes: 0
-  });
-};
-
-const movie = movieRef.doc('ifcmOx3a4HWRFemQ4lvA');
-
-export const updateMovie = () => {
-  movie.update({
-    title: 'of rats and spikes'
+export const incrementVote = (roomCode, filmId) => {
+  const roomRef = db.document(`${roomCode}/movies`);
+  return roomRef.get().then((doc) => {
+    return doc.data();
   });
 };
 

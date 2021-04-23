@@ -34,16 +34,8 @@ const App = () => {
           movieList={movieList}
           path="/hostfilter"
         />
-        <WaitingRoom
-          movieList={movieList}
-          roomCode={roomCode}
-          path="/waitingroom"
-        />
-        <MoviesList
-          movieList={movieList}
-          roomCode={roomCode}
-          path="/movieslist"
-        />
+        <WaitingRoom movieList={movieList} roomCode={roomCode} path="/waitingroom" />
+        <MoviesList movieList={movieList} roomCode={roomCode} path="/movieslist" />
         <Result path="/result" />
       </Router>
     </View>
