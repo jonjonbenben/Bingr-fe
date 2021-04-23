@@ -1,9 +1,5 @@
 import { fetchTopMovies, fetchMovieById } from './movie-api';
-import {
-  filterByGenreId,
-  providersByMovieId,
-  compareProviderIdLists,
-} from './utils/utils';
+import { filterByGenreId, providersByMovieId, compareProviderIdLists } from './utils/utils';
 
 // TODO:
 
