@@ -49,11 +49,11 @@ const HostFilter = (props) => {
         return res;
       })
       .then((filteredMovies) => {
-        const formattedMovies = formatGamesRoomMovies(filteredMovies);
+        // const formattedMovies = formatGamesRoomMovies(filteredMovies);
         createGameRoom(
           props.roomCode,
-          props.name,
-          formattedMovies,
+          // props.name,
+          // formattedMovies,
           filteredMovies
         );
         navigate('/waitingroom');
